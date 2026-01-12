@@ -1,0 +1,13 @@
+
+concat(
+  'xxxxxxxxxxxxxx',
+  formatDateTime(
+    convertTimeZone(
+      utcNow(),
+      'UTC',
+      'Eastern Standard Time'
+    ),
+    'yyyy-MM-dd_HH-mm-ss'
+  ),
+  '.csv'
+)
