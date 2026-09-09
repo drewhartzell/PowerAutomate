@@ -1,0 +1,3 @@
+concat(toUpper(substring(split(triggerBody()?['ApplicantsName'], ' ')[0], 0, 1)), 
+toLower(substring(split(triggerBody()?['ApplicantsName'], ' ')[0], 1, 
+sub(length(split(triggerBody()?['ApplicantsName'], ' ')[0]), 1))))
