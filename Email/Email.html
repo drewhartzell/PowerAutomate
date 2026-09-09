@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>xxxxxxxxxxx | xxxxxxxxxx</title>
+</head>
+<body style="margin:0; padding:0; background-color:#F0F4F8; font-family: Arial, Helvetica, sans-serif; color:#2C3E44; font-size:14px; line-height:1.5;">
+<center>
+  <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#F0F4F8">
+    <tr>
+      <td align="center" style="padding:30px 0;">
+        <!-- Main container (680px) -->
+        <table width="680" cellpadding="0" cellspacing="0" bgcolor="#FFFFFF" style="width:680px; border-radius:24px; box-shadow:0 12px 28px rgba(0,0,0,0.08); overflow:hidden;">
+          
+          <!-- BLUE HEADER WITH WHITE LOGO -->
+          <tr>
+            <td bgcolor="#123C52" style="background-color:#415a68; padding:20px 30px;">
+              <table width="100%" cellpadding="0" cellspacing="0">
+                <tr>
+                  <td align="left" valign="middle" style="width:300px;">
+                    <div style="font-size:18px;font-weight:700;letter-spacing:0.5px;line-height:20px;mso-line-height-rule:exactly;">
+        <span style="color:#FFFFFF;">xxxx</span><span style="color:#FFFFFF;">xxxxxx</span>
+      </div>
+                  </td>
+                  <td align="right" valign="middle" style="color:#FFFFFF; font-size:22px; font-weight:600; letter-spacing:-0.2px;">
+                    xxxxxxxxx
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- CONTENT -->
+          <tr>
+            <td style="padding:30px 30px 20px 30px;">
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 16px 0;">
+  <tr>
+    <td align="left" valign="middle">Hello @{concat(toUpper(substring(split(triggerBody()?['ApplicantsName'], ' ')[0], 0, 1)), toLower(substring(split(triggerBody()?['ApplicantsName'], ' ')[0], 1, 
+                                        sub(length(split(triggerBody()?['ApplicantsName'], ' ')[0]), 1))))},</td>
+    <td align="right" valign="middle" style="font-weight:700; color:#0A2B3C;">@{triggerBody()?['Status/Value']}</td>
+  </tr>
+</table>
+              @{if(equals(triggerBody()?['Status/Value'], 'Planning'),
+concat(
+'<p style="margin:0 0 16px 0;">Your sabbatical request is currently under review. The Human Resources team is processing your request. You will receive a notification when there is any progress in the process.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with your request:</p>'
+),
+if(equals(triggerBody()?['Status/Value'], 'Approved'),
+concat(
+'<p style="margin:0 0 16px 0;">We invite you to begin executing the transition plan you submitted and to work with your manager to ensure that all your responsibilities are fully covered during your approved sabbatical period. 
+  If you require any assistance, please do not hesitate to contact us.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with your approved request:</p>'
+),
+if(equals(triggerBody()?['Status/Value'], 'On Sabbatical'),
+concat(
+'<p style="margin:0 0 16px 0;">The employee is currently in their sabbatical period.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with this sabbatical period:</p>'
+),
+if(equals(triggerBody()?['Status/Value'], 'Completed'),
+concat(
+'<p style="margin:0 0 16px 0;">Welcome back! Your sabbatical period has ended, and we are delighted to have you with us again. 
+  We encourage you to schedule a meeting with your supervisor to get up to date on important developments, updates, and key topics that took place during your absence.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with this completed sabbatical period:</p>'
+),
+if(equals(triggerBody()?['Status/Value'], 'Rejected'),
+concat(
+'<p style="margin:0 0 16px 0;">Your request has not been approved because it does not meet the requirements established in the Sabbatical Policy. Human Resources will contact you.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with your request:</p>'
+),
+concat(
+'<p style="margin:0 0 16px 0;">We would like to inform you that your sabbatical period request has been successfully submitted.</p>',
+'<p style="margin:0 0 16px 0;">From this point on, the Human Resources team will be managing your request and will reach out to the management team to review the proposed dates and obtain the corresponding approvals.</p>',
+'<p style="margin:0 0 24px 0;">Below are the details associated with your request:</p>'
+)
+)))))}
+              <hr style="border:none; border-top:1px solid #c9972b; margin:10px 0;">
+
+              <!-- EMPLOYEE INFORMATION (table) -->
+              <h2 style="color:#0A2B3C; font-size:18px; margin:10px 0 12px 0; padding-bottom:8px; border-bottom:2px solid #c9972b; display:inline-block; font-weight:600;">Employee Information</h2>
+              <table width="100%" cellpadding="8" cellspacing="0" style="margin:0px 0 20px 0; border-collapse:collapse;">
+                <tr><td style="width:40%; font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Full Name</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;"> @{triggerBody()?['ApplicantsName']}</td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Job Title/Position</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;"> @{triggerBody()?['JobTitle']}</td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Company</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;"> @{triggerBody()?['Subsidiary']}</td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Department</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;"> @{triggerBody()?['Department']}</td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Supervisor</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;"> @{triggerBody()?['SupervisorsName']}</td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Request Date</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;">@{triggerBody()?['DateofApplicationSubmission']} </td></tr>
+                <tr><td style="font-weight:600; padding:6px 6px; border-bottom:1px solid #E2E8F0;">Period Type</td><td style="padding:6px 6px; border-bottom:1px solid #E2E8F0;">@{triggerBody()?['TypeofSabbaticalPeriod']} </td></tr>
+              </table>
+
+              <!-- DATES (same format as acceptance) -->
+            <h2 style="color:#0A2B3C; font-size:18px; margin:10px 0 12px 0; padding-bottom:8px; border-bottom:2px solid #c9972b; display:inline-block; font-weight:600;">Possible Dates (in order of preference)</h2>
+            <table width="100%" cellpadding="0" cellspacing="0" style="margin:15px 0 20px 0;">
+              <tr>
+                <td width="33%" valign="top" style="padding-right:8px;"><table width="100%" cellpadding="12" cellspacing="0" style="background-color:#FAFCFD; border-radius:16px; border:1px solid #E4EAF0;"><tr><td style="font-weight:700; 
+                    color:#0A0E13;">1st Option</td></tr><tr><td style="font-size:13px;">Start: <span style="color:#0A0E13;">@{triggerBody()?['Option1_x002d_StartDateoftheSabb']}</span><br>End: <span style="color:#0A0E13;">
+                      @{triggerBody()?['Option1_x002d_EndDateoftheSabbat']}</span></td></tr></table></td>
+                <td width="34%" valign="top" style="padding:0 4px;"><table width="100%" cellpadding="12" cellspacing="0" style="background-color:#FAFCFD; border-radius:16px; border:1px solid #E4EAF0;"><tr><td style="font-weight:700; 
+                    color:#0A0E13;">2nd Option</td></tr><tr><td style="font-size:13px;">Start: <span style="color:#0A0E13;">@{triggerBody()?['Option2_x002d_StartDateoftheSabb']}</span><br>End: <span style="color:#0A0E13;"> 
+                      @{triggerBody()?['Option2_x002d_EndDateoftheSabbat']}</span></td></tr></table></td>
+                <td width="33%" valign="top" style="padding-left:8px;"><table width="100%" cellpadding="12" cellspacing="0" style="background-color:#FAFCFD; border-radius:16px; border:1px solid #E4EAF0;"><tr><td style="font-weight:700; 
+                    color:#0A0E13;">3rd Option</td></tr><tr><td style="font-size:13px;">Start: <span style="color:#0A0E13;">@{triggerBody()?['Option3_x002d_StartDateoftheSabb']}</span><br>End: <span style="color:#0A0E13;">
+                      @{triggerBody()?['Option3_x002d_EndDateoftheSabbat']}</span></td></tr></table></td>
+              </tr>
+            </table>
+
+              <!-- ABSENCE PLAN (cards with left border) -->
+              <h2 style="color:#0A2B3C; font-size:18px; margin:0px 0 12px 0; padding-bottom:8px; border-bottom:2px solid #c9972b; display:inline-block; font-weight:600;">Absence Plan</h2>
+              
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                <tr><td style="background-color:#FAFCFD; border-left:4px solid #c9972b; padding:12px 20px; border-radius:12px;">
+                  <strong>Main Responsibilities</strong><br>
+                  @{triggerBody()?['MainResponsibilities_x003a_']}
+                </td></tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                <tr><td style="background-color:#FAFCFD; border-left:4px solid #c9972b; padding:12px 20px; border-radius:12px;">
+                  <strong>Approval Processes</strong><br>
+                  @{triggerBody()?['ApprovalProcesses_x003a_']}
+                </td></tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:5px;">
+                <tr><td style="background-color:#FAFCFD; border-left:4px solid #c9972b; padding:12px 20px; border-radius:12px;">
+                  <strong>Backup Plan</strong><br>
+                  @{triggerBody()?['BackupPlan_x003a_']}
+                </td></tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:10px;">
+                <tr><td style="background-color:#FAFCFD; border-left:4px solid #c9972b; padding:12px 20px; border-radius:12px;">
+                  <strong>Training or Handover Plan</strong><br>
+                  @{triggerBody()?['TrainingorHandoverPlan_x003a_']}
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <!-- FOOTER -->
+          <tr>
+            <td bgcolor="#EFF3F6" style="background-color:#EFF3F6; padding:20px 30px; text-align:center; font-size:12px; color:#5A6F7A; border-top:1px solid #DCE4E8;">
+              Automatically generated document – xxxxxxxxxxx xxxxxxxx <br>
+              This email is for informational purposes only, please do not reply.
+            </td>
+          </tr>
+
+        </table>
+      </td>
+    </tr>
+  </table>
+</center>
+</body>
+</html>
